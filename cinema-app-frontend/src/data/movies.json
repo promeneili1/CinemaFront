@@ -1,0 +1,92 @@
+[
+    {
+      "id": 1,
+      "title": "Avengers",
+      "originalTitle": "Avengers",
+      "genres": ["Action"," " , "Drama"],
+      "duration": "120 minutes",
+      "imageUrl": "https://th.bing.com/th/id/OIP.f6Et8CDwVX2XrCfNUMpQiAHaHa?rs=1&pid=ImgDetMain"
+    },
+    {
+      "id": 2,
+      "title": "The Inception",
+      "originalTitle": "The Inception",
+      "genres": ["Action"],
+      "duration": "95 minutes",
+      "imageUrl": "https://th.bing.com/th/id/OIP.aTRMYaSm0oeIcVRAK27ETAHaEo?w=272&h=180&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+        "id": 3,
+        "title": "Shutter Island",
+        "originalTitle": "Shutter Island",
+        "genres": ["Action"," " , "Horror"],
+        "duration": "95 minutes",
+        "imageUrl": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p3531967_p_v13_an.jpg"
+      },
+      {
+        "id": 4,
+        "title": "Shutter Island",
+        "originalTitle": "Shutter Island",
+        "genres": ["Action"," " , "Horror"],
+        "duration": "95 minutes",
+        "imageUrl": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p3531967_p_v13_an.jpg"
+      },
+      {
+        "id": 5,
+        "title": "Shutter Island",
+        "originalTitle": "Shutter Island",
+        "genres": ["Action"," " , "Horror"],
+        "duration": "95 minutes",
+        "imageUrl": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p3531967_p_v13_an.jpg"
+      },
+      {
+        "id": 6,
+        "title": "Shutter Island",
+        "originalTitle": "Shutter Island",
+        "genres": ["Action"," " , "Horror"],
+        "duration": "95 minutes",
+        "imageUrl": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p3531967_p_v13_an.jpg"
+      },
+      {
+        "id": 7,
+        "title": "Shutter Island",
+        "originalTitle": "Shutter Island",
+        "genres": ["Action"," " , "Horror"],
+        "duration": "95 minutes",
+        "imageUrl": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p3531967_p_v13_an.jpg"
+      },
+      {
+        "id": 8,
+        "title": "Shutter Island",
+        "originalTitle": "Shutter Island",
+        "genres": ["Action"," " , "Horror"],
+        "duration": "95 minutes",
+        "imageUrl": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p3531967_p_v13_an.jpg"
+      },
+      {
+        "id": 7,
+        "title": "Shutter Island",
+        "originalTitle": "Shutter Island",
+        "genres": ["Action"," " , "Horror"],
+        "duration": "95 minutes",
+        "imageUrl": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p3531967_p_v13_an.jpg"
+      },
+      {
+        "id": 7,
+        "title": "Shutter Island",
+        "originalTitle": "Shutter Island",
+        "genres": ["Action"," " , "Horror"],
+        "duration": "95 minutes",
+        "imageUrl": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p3531967_p_v13_an.jpg"
+      },
+      {
+        "id": 7,
+        "title": "Shutter Island",
+        "originalTitle": "Shutter Island",
+        "genres": ["Action"," " , "Horror"],
+        "duration": "95 minutes",
+        "imageUrl": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p3531967_p_v13_an.jpg"
+      }
+      
+  ]
+  
