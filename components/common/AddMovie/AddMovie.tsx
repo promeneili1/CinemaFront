@@ -37,11 +37,9 @@ const AddMovie = () => {
             <div>
             <Input label="Original Name:" type="text"  />
             </div>
-
             <div>
-            <Input label="Genre:" type="text"   />
+            <Input label="Genre:" type="text" name="movieName"  />
             </div>
-
             <div>
              <Input label="Duration:" type="text"  />
             </div>

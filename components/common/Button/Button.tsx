@@ -11,5 +11,4 @@ const Buttons = ({ children, handleClick }: ButtonProps) => {
   return <Button onClick={handleClick}>{children}</Button>;
 };
 
-
 export default Buttons;
