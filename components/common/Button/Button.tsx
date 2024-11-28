@@ -1,14 +1,14 @@
 import { ComponentPropsWithoutRef } from "react";
-import { Button } from "./Button.styled";
+import { Buttons  } from "./Button.styled";
 
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   children: JSX.Element;
-  handleClick: () => void;
+  variant?: "primary" | "secondary" | "close";
+  onClick: () => void;
 }
 
-// TODO - rename to Button
-const Buttons = ({ children, handleClick }: ButtonProps) => {
-  return <Button onClick={handleClick}>{children}</Button>;
+const Button = ({ children, onClick ,  variant = "primary"  }: ButtonProps) => {
+  return <Buttons onClick={onClick} variant={variant}>{children}</Buttons>
 };
 
-export default Buttons;
+export default Button;

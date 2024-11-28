@@ -1,17 +1,19 @@
 import { ComponentPropsWithoutRef } from "react";
+import { Label, Input as StyledInput } from "./Input.styled"; // Izmeni naziv ovde
 
 interface InputProps extends ComponentPropsWithoutRef<"input"> {
-    label: string;
-    type: string;
-  }
+  label: string;
+  type: string;
+}
 
-  const Input = ({ label, type, ...props }: InputProps) => {
-    return (
-      <div>
-        <label>{label}</label>
-        <input ></input>
-      </div>
-    );
-  };
-  
-export default Input;
+const CustomInput = ({ label, type, ...props }: InputProps) => {
+  return (
+    <>
+      <Label>{label}</Label>
+      {/* TODO - add check for different input type */}
+      <StyledInput {...props} />
+    </>
+  );
+};
+
+export default CustomInput;

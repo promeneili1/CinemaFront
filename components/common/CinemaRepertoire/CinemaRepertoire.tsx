@@ -1,8 +1,8 @@
-import { Text, CardContainer, CardImage } from "./CinemaRepertoire.styled";
 import movies from "../../../data/movies.json";
 import { MovieScreening } from "../../../models/MovieScreening";
-import { CardWrapper } from "./CinemaRepertoire.styled"; 
 import { MainContent } from "../Footer/Footer.styled"; 
+import { Text, CardContainer, CardImage } from "./CinemaRepertoire.styled";
+import { CardWrapper } from "./CinemaRepertoire.styled"; 
 
 const CinemaRepertoire = () => {
   return (

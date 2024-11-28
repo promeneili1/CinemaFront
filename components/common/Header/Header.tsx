@@ -21,6 +21,7 @@ const Header: React.FC = () => {
           <li>
           <Button as="a" href="#">Contact</Button>
          </li>
+         
         </ul>
       </Nav>
     </HeaderContainer>
