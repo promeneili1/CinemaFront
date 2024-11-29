@@ -4,7 +4,7 @@ import { Buttons  } from "./Button.styled";
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   children: JSX.Element;
   variant?: "primary" | "secondary" | "close";
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button = ({ children, onClick ,  variant = "primary"  }: ButtonProps) => {

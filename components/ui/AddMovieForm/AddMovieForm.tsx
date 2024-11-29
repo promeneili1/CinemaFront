@@ -1,21 +1,21 @@
 import { useState } from "react";
 import Modal from "../../common/Modal/Modal";
 import DynamicForm from "../../common/DynamicForm/DynamicForm";
+import { createMovie } from "../../services/MovieService";
 
 interface AddMovieFormProps {
   isModalOpen: boolean;
   closeModal: () => void;
 }
-
+// TODO - add form validation of each input fields (check if they include any special characters, if they do, display the error below the input field)
 const AddMovieForm = ({ isModalOpen, closeModal }: AddMovieFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
     originalName: "",
     posterImage: "",
     duration: 0,
-    genre: [] as string[],
+    genres: [] as number[],
   });
-  
 
   const fields = [
     {
@@ -23,14 +23,13 @@ const AddMovieForm = ({ isModalOpen, closeModal }: AddMovieFormProps) => {
       type: "text",
       name: "name",
       value: formData.name,
-      onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+      ) => {
         setFormData((prevFormData) => ({
           ...prevFormData,
           name: e.target.value,
-          
         }));
-        
-
       },
     },
     {
@@ -43,8 +42,6 @@ const AddMovieForm = ({ isModalOpen, closeModal }: AddMovieFormProps) => {
           ...prevFormData,
           originalName: e.target.value,
         })),
-        
-
     },
     {
       label: "Poster Image:",
@@ -56,35 +53,24 @@ const AddMovieForm = ({ isModalOpen, closeModal }: AddMovieFormProps) => {
           ...prevFormData,
           posterImage: e.target.value,
         })),
-        
-
     },
     {
       label: "Genres:",
       type: "select",
       name: "genre",
-      value: formData.genre,
-      onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      value: formData.genres,
+      onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+      ) => {
         const selectedGenres = Array.from(
           (e.target as HTMLSelectElement).selectedOptions,
-          (option) => option.value
+          (option) => Number(option.value)
         );
         setFormData((prevFormData) => ({
           ...prevFormData,
-          genre: selectedGenres,
+          genres: selectedGenres,
         }));
       },
-      
-      children: (
-        <>
-          <option value="Action">Action</option>
-          <option value="Drama">Drama</option>
-          <option value="Comedy">Comedy</option>
-          <option value="Horror">Horror</option>
-          
-        </>
-      ),
-      
     },
     {
       label: "Duration:",
@@ -99,25 +85,23 @@ const AddMovieForm = ({ isModalOpen, closeModal }: AddMovieFormProps) => {
     },
   ];
 
-  const handleSubmit = () => {
-    console.log("Form Data:", formData);
-    
-    closeModal(); 
-
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("Submit triggered");
+    try {
+      const response = await createMovie(formData);
+      console.log("Movie created successfully:", response);
+      closeModal();
+    } catch (error) {
+      console.error("Error creating movie:", error);
+    }
   };
 
   return (
     <Modal isOpen={isModalOpen} onClose={closeModal}>
-      <DynamicForm fields={fields} handleSubmit={handleSubmit} /> 
+      <DynamicForm fields={fields} handleSubmit={handleSubmit} />
     </Modal>
   );
 };
 
 export default AddMovieForm;
-// {
-//   "name": "TEST",
-//   "originalName": "NEW VALUE",
-//   "posterImage": "tEST 2",
-//   "duration": 5,
-//   "genres": ["DRAMA"],
-// }
