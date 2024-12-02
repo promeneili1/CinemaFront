@@ -8,11 +8,16 @@ const genresApi = axios.create({
   baseURL: `${BASE_URL}/genres`,
 });
 
+
+
 export const GetAllGenre = {
-  getGenres: async () => {
+  getGenres: async (): Promise<{ value: number; label: string }[]> => {
     try {
-      const response = await genresApi.get<Genre[]>("/all");
-      return response.data;
+      const response = await genresApi.get<Genre[]>("/all");  // Fetching array of Genre objects
+      return response.data.map((genre) => ({
+        value: genre.id,  // genre.id is used as value
+        label: genre.name,  // genre.name is used as label
+      }));
     } catch (error) {
       console.error("Error fetching genres:", error);
       throw error;
@@ -20,8 +25,9 @@ export const GetAllGenre = {
   },
 };
 
+
 interface GenreModel {
-    name: string;
+  name: string;
 }
 
 export const createGenre = async (formData: GenreModel) => {

@@ -1,40 +1,61 @@
-import movies from "../../../data/movies.json";
+import { useState, useEffect } from "react";
 import { MovieScreening } from "../../../models/MovieScreening";
-import { MainContent } from "../Footer/Footer.styled"; 
-import { Text, CardContainer, CardImage } from "./CinemaRepertoire.styled";
-import { CardWrapper } from "./CinemaRepertoire.styled"; 
+import { getFilteredScreenings } from "../../services/MovieScreeningService";
+import { MainContent } from "../Footer/Footer.styled";
+import {
+  CardWrapper,
+  CardContainer,
+  CardImage,
+} from "../CinemaRepertoire/CinemaRepertoire.styled";
 
 const CinemaRepertoire = () => {
+  const [movies, setMovies] = useState<MovieScreening[]>([]); 
+  const [error, setError] = useState<string | null>(null); 
+
+  useEffect(() => {
+    const fetchMoviesScreening = async () => {
+      const filters = {
+        name: "",
+        duration: "",
+        genres: [] as number[],
+      };
+  
+      console.log("Fetching movie screenings with filters:", filters); 
+  
+      const data = await getFilteredScreenings(filters);
+      
+      if (data) {
+        setMovies(data); 
+      } else {
+        setError("No movies found.");
+      }
+    };
+  
+    fetchMoviesScreening();
+  }, []);
+
+  if (error) {
+    return <div>{error}</div>; 
+  }
+
   return (
-    <MainContent> {}
+    <MainContent>
       <CardWrapper>
-        {movies.map(
-          ({
-            id,
-            imageUrl,
-            title,
-            duration,
-            genres,
-            originalTitle,
-          }: MovieScreening) => (
-            <CardContainer key={id}>
-              <CardImage src={imageUrl} />
+        {movies.length === 0 ? (
+          <div>No movies available.</div> 
+        ) : (
+          movies.map((movie) => (
+            <CardContainer key={movie.id}>
+              <CardImage src={movie.posterImage} alt={movie.movieTitle} />
               <div>
-                <Text>
-                  <strong>Movie Name:</strong> {title}
-                </Text>
-                <Text>
-                  <strong>Original Name:</strong> {originalTitle}
-                </Text>
-                <Text>
-                  <strong>Genres:</strong> {genres}
-                </Text>
-                <Text>
-                  <strong>Duration:</strong> {duration}
-                </Text>
+                <h3>{movie.movieTitle}</h3> 
+                <p>
+                  {movie.screeningDate} at {movie.screeningTime} 
+                </p>
+                <p>Ticket Price: ${movie.ticketPrice}</p> 
               </div>
             </CardContainer>
-          )
+          ))
         )}
       </CardWrapper>
     </MainContent>

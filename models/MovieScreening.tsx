@@ -1,8 +1,12 @@
+import { Genre } from "./Genre";
+
 export interface MovieScreening {
+  genres: Genre[];
   id: number; 
-  imageUrl: string; 
-  title: string; 
-  duration: string; 
-  genres: string[]; 
-  originalTitle: string; 
+  screeningDate: string; 
+  posterImage: string;
+  screeningTime: string; 
+  ticketPrice: number;
+  movieTitle: string;
+  isDeleted: boolean; 
 }

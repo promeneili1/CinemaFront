@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { GetAllGenre } from "../../services/GenreService";
-import { Genre } from "../../../models/Genre";
 import Button from "../Button/Button";
 import CustomInput from "../Input/Input";
 import { DynamicForm as StyledDynamicForm } from "./DynamicForm.styled";
 import { InputWrapper } from "../Input/Input.styled";
 
 interface Field {
+  
   label: string;
-  type: string;
+  type: string; 
   name: string;
   value: any;
   onChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
-  children?: JSX.Element;
+  children?: never;
+  multiple?: boolean; 
+  options?: { label: string; value: any }[]; 
+  required?: boolean; 
+  pattern?: string;   
+  title?: string;     
+  min?: number;       
 }
 
 interface DynamicFormProps {
   fields: Field[];
-  handleSubmit: (event: React.FormEvent) => void;
+  handleSubmit: (event: React.FormEvent) => void; 
 }
 
 const DynamicForm: React.FC<DynamicFormProps> = ({ fields, handleSubmit }) => {
@@ -29,11 +35,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ fields, handleSubmit }) => {
     const fetchGenres = async () => {
       try {
         const genreData = await GetAllGenre.getGenres();
-        const genreNames = genreData.map((genre: Genre) => ({
-          label: genre.name,
-          value: genre.id,
-        }));
-        setGenres(genreNames);
+        setGenres(genreData);  
       } catch (error) {
         console.error("Error fetching genres:", error);
       }
@@ -51,8 +53,8 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ fields, handleSubmit }) => {
             label={field.label}
             type={field.type}
             value={field.value}
-            options={genres}
-            multiple={true}
+            options={field.options} 
+            multiple={field.multiple ?? false}
             onChange={field.onChange}
           />
         </InputWrapper>

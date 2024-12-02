@@ -1,9 +1,10 @@
-import { Label, Input as StyledInput, Select } from "./Input.styled";
+import { Label, Input as StyledInput } from "./Input.styled";
+import CustomSelect from "../Select/Select";
 
 interface InputProps {
   name: string;
   label: string;
-  type: string;
+  type: string; 
   value: string | string[] | number;
   options?: { label: string; value: any }[];
   multiple: boolean;
@@ -12,24 +13,20 @@ interface InputProps {
   ) => void;
 }
 
-const CustomInput = ({
-  label,
-  type,
-  options,
-  multiple,
-  ...props
-}: InputProps) => {
+const CustomInput = ({ label, type, options, multiple, ...props }: InputProps) => {
+ 
+
   return (
     <div>
       <Label>{label}</Label>
-      {type === "select" ? (
-        <Select {...props} multiple={multiple} value={props.value}>
-          {options?.map((option, index) => (
-            <option key={index} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </Select>
+      {type === "select" && options ? (
+        <CustomSelect
+          name={props.name}
+          value={props.value as string | string[]}
+          multiple={multiple}
+          options={options}
+          onChange={props.onChange}
+        />
       ) : (
         <StyledInput {...props} />
       )}
